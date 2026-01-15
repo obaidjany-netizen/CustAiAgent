@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CUST AI Agent | AI Agents Assignment</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    body { background:#0a0a0a; overflow-x:hidden; }
+
+    /* Interactive particle background */
+    canvas { position:fixed; inset:0; z-index:-2; }
+
+    /* Loader */
+    .loader {
+      position: fixed; inset: 0; background:#000; display:flex; align-items:center; justify-content:center; z-index:50;
+      animation: fadeOut 1s ease 3s forwards;
+    }
+    @keyframes fadeOut { to { opacity:0; visibility:hidden; } }
+
+    /* Toast */
+    .toast {
+      position:fixed; bottom:30px; right:30px; background:#111; color:white;
+      padding:16px 24px; border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,.5);
+      opacity:0; transform:translateY(20px); transition:.4s; z-index:60;
+    }
+    .toast.show { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body class="text-white font-sans">
+
+<!-- Particle Canvas -->
+<canvas id="bg"></canvas>
+
+<!-- Loader -->
+<div class="loader">
+  <div class="text-center">
+    <div class="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+    <h1 class="text-3xl font-bold">Launching CUST AI Agent</h1>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="fixed top-0 left-0 w-full z-40 bg-black/50 backdrop-blur border-b border-gray-800">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <h1 class="font-bold text-xl">CUST AI</h1>
+    <div class="space-x-6 text-gray-300">
+      <a href="#home" class="hover:text-white">Home</a>
+      <a href="#overview" class="hover:text-white">Overview</a>
+      <a href="#screenshots" class="hover:text-white">Screenshots</a>
+      <a href="#script" class="hover:text-white">Script</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="min-h-screen flex flex-col items-center justify-center text-center px-6" data-aos="fade-up">
+  <h1 class="text-6xl font-extrabold mb-6">CUST AI Agent</h1>
+  <p class="text-gray-400 max-w-2xl">An intelligent AI assistant built with Voice Flow for Capital University of Science & Technology students.</p>
+  <div class="mt-10 flex flex-wrap gap-4 justify-center">
+    <button onclick="copyScript()" class="px-8 py-4 bg-white text-black rounded-2xl hover:scale-105 transition">Copy Agent Script</button>
+    <a href="https://cust.edu.pk/" target="_blank" class="px-8 py-4 border border-white rounded-2xl hover:bg-white hover:text-black transition">Visit CUST Website</a>
+  </div>
+</section>
+
+<!-- Overview -->
+<section id="overview" class="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12">
+  <div class="bg-black/40 backdrop-blur p-8 rounded-3xl shadow-xl" data-aos="fade-right">
+    <h2 class="text-3xl font-semibold mb-4">Agent Overview</h2>
+    <ul class="list-disc ml-6 text-gray-300 space-y-2">
+      <li>AI Agent Name: CUST AI Agent</li>
+      <li>Use Case: University Information</li>
+      <li>Target Users: Students</li>
+      <li>No-Code Tool: Voice Flow</li>
+    </ul>
+  </div>
+  <div class="bg-black/40 backdrop-blur p-8 rounded-3xl shadow-xl" data-aos="fade-left">
+    <h2 class="text-3xl font-semibold mb-4">Agent Implementation</h2>
+    <ul class="list-disc ml-6 text-gray-300 space-y-2">
+      <li>Built using Voice Flow</li>
+      <li>Intents for admissions, programs, fees</li>
+      <li>Decision-based logic flows</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Screenshots -->
+<section id="screenshots" class="max-w-6xl mx-auto px-6 pb-24">
+  <h2 class="text-3xl font-semibold mb-10 text-center" data-aos="zoom-in">Project Screenshots</h2>
+  <div class="grid md:grid-cols-2 gap-10">
+    <div class="border-2 border-dashed border-gray-600 rounded-3xl py-10 flex items-center justify-center text-gray-500" data-aos="flip-left"><img src="./Images/1.jpeg" alt="Agent Builder Screenshot"></div>
+    <div class="border-2 border-dashed border-gray-600 rounded-3xl py-10 flex items-center justify-center text-gray-500" data-aos="flip-right"><img src="./Images/2.jpeg" alt="Conversation Flow Screenshot"></div>
+  </div>
+</section>
+
+<!-- Script -->
+<section id="script" class="max-w-5xl mx-auto px-6 pb-24" data-aos="fade-up">
+  <h2 class="text-3xl font-semibold mb-6">Voice Flow Embed Script</h2>
+  <pre id="scriptBox" class="bg-black p-6 rounded-2xl overflow-x-auto text-sm text-gray-300"><code>(function(d, t) {
+  var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+  v.onload = function() {
+    window.voiceflow.chat.load({
+      verify: { projectID: '696803899869b06e2d24c0e7' },
+      url: 'https://general-runtime.voiceflow.com',
+      versionID: 'production',
+      voice: { url: 'https://runtime-api.voiceflow.com' }
+    });
+  }
+  v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
+  v.type = 'text/javascript';
+  s.parentNode.insertBefore(v, s);
+})(document, 'script');</code></pre>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-gray-700 py-10 text-center text-gray-400" data-aos="fade-in">
+  <p class="text-lg font-semibold">AI Agents Assignment</p>
+  <p>Submitted to: Ma'am Hafsa</p>
+  <p class="mt-3">Obaid Ur Rehman • Ahmed Mubeen • Azka Aamir • Manahil Binte Adil</p>
+</footer>
+
+<!-- Toast -->
+<div id="toast" class="toast">Script copied successfully</div>
+
+<script>
+  AOS.init({ duration: 1000, once: true });
+
+  function copyScript() {
+    navigator.clipboard.writeText(document.getElementById('scriptBox').innerText);
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  // Particle background
+  const canvas = document.getElementById('bg');
+  const ctx = canvas.getContext('2d');
+  let w, h, particles;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    particles = Array.from({length:60}, () => ({
+      x: Math.random()*w,
+      y: Math.random()*h,
+      vx: (Math.random()-0.5)*0.6,
+      vy: (Math.random()-0.5)*0.6
+    }));
+  }
+
+  function animate() {
+    ctx.clearRect(0,0,w,h);
+    ctx.fillStyle = '#ffffff22';
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<0||p.x>w) p.vx*=-1;
+      if(p.y<0||p.y>h) p.vy*=-1;
+      ctx.beginPath(); ctx.arc(p.x,p.y,1.2,0,Math.PI*2); ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize(); animate();
+</script>
+
+</body>
+</html>
